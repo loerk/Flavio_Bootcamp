@@ -23,7 +23,9 @@ mongo.connect(
     expenses = db.collection("expenses");
   }
 );
-
+app.get("/", (req, res) => {
+  res.send("Welcome");
+});
 app.post("/trip", (req, res) => {
   const name = req.body.name;
   trips.insertOne({ name: name }, (err, result) => {
@@ -74,7 +76,7 @@ app.get("/expenses", (req, res) => {
       res.status(500).json({ err: err });
       return;
     }
-    res.status(200).json({ trips: items });
+    res.status(200).json({ expenses: items });
   });
 });
 
