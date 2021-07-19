@@ -6,8 +6,27 @@ app.use(express.static("public"));
 
 // /data endpoint
 app.get("/data", async (req, res) => {
-  //define the GraphQL query in a string
-  const query = `{ viewer { login } }`;
+  //define the GraphQL query in a string, get most popular github repositories
+  const query = `
+  {
+    search(query: "stars:>50000", type: REPOSITORY, first: 10) {
+      repositoryCount
+      edges {
+        node {
+          ... on Repository {
+            name
+            owner {
+              login
+            }
+            stargazers {
+              totalCount
+            }
+          }
+        }
+      }
+    }
+  }
+`;
   //Store the GraphQL API endpoint in the url variable
   const url = "https://api.github.com/graphql";
   // object used to perform the connection to the server
