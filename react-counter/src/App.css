@@ -1,0 +1,21 @@
+.App {
+  background-color: rgb(189, 143, 172);
+  text-align: center;
+  padding: 50vmin;
+}
+Button {
+  background-color: #465165;
+  font-size: inherit;
+  color: white;
+  border-radius: 20px;
+  border: black 1px solid;
+  padding: 20px;
+  margin: 5px;
+  box-shadow: black 1px 1px 4px;
+}
+
+span {
+  text-align: bottom;
+  font-size: xx-large;
+  padding: 5px;
+}
